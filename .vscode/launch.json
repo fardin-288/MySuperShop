@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "MySuperShop_1551488c",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml",
+            "projectName": "MySuperShop_1551488c"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml",
+            "mainClass": "${file}"
+        }
+    ]
+}
