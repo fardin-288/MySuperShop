@@ -16,11 +16,11 @@
                <font>
                   <Font size="29.0" />
                </font></Button>
-            <Button fx:id="PackagesButton" alignment="TOP_LEFT" layoutY="240.0" mnemonicParsing="false" onAction="#clickPackagesButton" prefHeight="39.0" prefWidth="198.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Store" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="PackagesButton" alignment="TOP_LEFT" layoutY="240.0" mnemonicParsing="false" onAction="#clickPackagesButton" prefHeight="39.0" prefWidth="198.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Accounts" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="36.0" />
                </font></Button>
-            <Button fx:id="BookingButton" alignment="TOP_LEFT" layoutY="345.0" mnemonicParsing="false" onAction="#clickBookingButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Accounts" textFill="WHITE">
+            <Button fx:id="BookingButton" alignment="TOP_LEFT" layoutY="345.0" mnemonicParsing="false" onAction="#clickBookingButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Store" textFill="WHITE">
                <font>
                   <Font size="31.0" />
                </font></Button>

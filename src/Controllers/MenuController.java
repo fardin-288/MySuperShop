@@ -93,7 +93,7 @@ public class MenuController implements Initializable {
 
     public void clickPackagesButton(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("account.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setResizable(false);

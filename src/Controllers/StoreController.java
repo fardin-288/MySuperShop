@@ -44,21 +44,6 @@ class Product {
 
 public class StoreController implements Initializable {
 
-    // @FXML
-    // private ListView<Items> myListView;
-
-    // List<Items> product = new ArrayList<Items>(null);
-    // product.add(new Item(1,"eggs",10));
-
-    // @Override
-    // public void initialize(URL arg0, ResourceBundle arg1) {
-
-    // myListView.getItems().addAll(List);
-    // // myListView.getSelectionModel().selectedItemProperty().addListener(null);
-
-    // // Create a StackPane to hold the ListView
-    // }
-
     @FXML
     private ListView<Product> myListView;
 
