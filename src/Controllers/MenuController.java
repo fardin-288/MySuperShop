@@ -74,6 +74,12 @@ public class MenuController implements Initializable {
 
     public void clickAboutButton(ActionEvent event) throws IOException {
 
+        Parent root = FXMLLoader.load(getClass().getResource("sales.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+
         // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("about.fxml"));
         // AnchorPane newPane = fxmlLoader.load();
         // ContentPane.getChildren().setAll(newPane);
@@ -83,7 +89,14 @@ public class MenuController implements Initializable {
         BookingButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
     }
 
-    public void clickClientsButton(ActionEvent event) {
+    public void clickClientsButton(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("cashier.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+
         ContentPane.getChildren().clear();
         AboutButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
         ClientsButton.setStyle("-fx-background-color:  d3d3d3;" + "-fx-background-radius:50;");

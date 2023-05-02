@@ -2,9 +2,16 @@ package Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.scene.Node;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.Insets;
@@ -142,9 +149,18 @@ public class EmployeeController {
     @FXML
     private ListView<Employee> employeeListView;
     @FXML
-    private Button addButton, modifyButton, removeButton, viewButton;
+    private Button addButton, modifyButton, removeButton, viewButton, backButton;
 
     private EmployeeList employeeList;
+
+    public void goBack(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+    }
 
     public void initialize() {
         employeeList = new EmployeeList(); // initialize the employee list

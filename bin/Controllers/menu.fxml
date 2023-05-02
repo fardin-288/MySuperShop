@@ -12,19 +12,19 @@
    <left>
       <AnchorPane fx:id="SidebarPane" style="-fx-background-color: grey; -fx-border-color: White;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ClientsButton" alignment="TOP_LEFT" layoutY="135.0" mnemonicParsing="false" onAction="#clickClientsButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Customer" textFill="WHITE">
+            <Button fx:id="ClientsButton" alignment="TOP_LEFT" layoutY="135.0" mnemonicParsing="false" onAction="#clickClientsButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Cashier" textFill="WHITE">
                <font>
                   <Font size="29.0" />
                </font></Button>
-            <Button fx:id="PackagesButton" alignment="TOP_LEFT" layoutY="240.0" mnemonicParsing="false" onAction="#clickPackagesButton" prefHeight="39.0" prefWidth="198.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Accounts" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="PackagesButton" alignment="TOP_LEFT" layoutY="240.0" mnemonicParsing="false" onAction="#clickPackagesButton" prefHeight="39.0" prefWidth="198.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Employees" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="36.0" />
+                  <Font size="29.0" />
                </font></Button>
             <Button fx:id="BookingButton" alignment="TOP_LEFT" layoutY="345.0" mnemonicParsing="false" onAction="#clickBookingButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Store" textFill="WHITE">
                <font>
                   <Font size="31.0" />
                </font></Button>
-            <Button fx:id="AboutButton" alignment="TOP_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#clickAboutButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Employees" textFill="WHITE">
+            <Button fx:id="AboutButton" alignment="TOP_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#clickAboutButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Sales" textFill="WHITE">
                <font>
                   <Font size="27.0" />
                </font>

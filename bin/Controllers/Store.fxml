@@ -14,11 +14,14 @@
             <Font size="39.0" />
          </font>
       </Text>
-      <ListView fx:id="myListView" layoutX="135.0" layoutY="115.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextField fx:id="nameField" layoutX="398.0" layoutY="115.0" />
-      <TextField fx:id="priceField" layoutX="398.0" layoutY="159.0" />
+      <ListView fx:id="myListView" layoutX="135.0" layoutY="115.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" />
+      <TextField fx:id="nameField" layoutX="398.0" layoutY="115.0" promptText="name" />
+      <TextField fx:id="quantityField" layoutX="398.0" layoutY="159.0" promptText="Quantity" />
       <Button fx:id="addButton" layoutX="447.0" layoutY="243.0" mnemonicParsing="false" text="Add" />
       <Button fx:id="removeButton" layoutX="447.0" layoutY="290.0" mnemonicParsing="false" text="Remove" />
       <Button fx:id="editButton" layoutX="447.0" layoutY="203.0" mnemonicParsing="false" text="Edit" />
+      <TextField fx:id="costField" layoutX="398.0" layoutY="75.0" promptText="Unit Cost" />
+      <TextField fx:id="IDfield" layoutX="398.0" layoutY="36.0" promptText="ID" />
+      <Button fx:id="backButton" layoutX="38.0" layoutY="24.0" mnemonicParsing="false" onAction="#clickBackButton" text="Back" />
    </children>
 </AnchorPane>

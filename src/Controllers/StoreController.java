@@ -1,5 +1,6 @@
 package Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +9,15 @@ import java.util.ResourceBundle;
 
 import javax.print.DocFlavor.STRING;
 
+import javafx.scene.Node;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -25,23 +30,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-class Product {
-
-    public int ID;
-    public String name;
-    public int quantity;
-
-    public Product(String name, int quantity) {
-        this.name = name;
-        this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
-};
-
 public class StoreController implements Initializable {
 
     @FXML
@@ -51,7 +39,13 @@ public class StoreController implements Initializable {
     private TextField nameField;
 
     @FXML
-    private TextField priceField;
+    private TextField quantityField;
+
+    @FXML
+    private TextField costField;
+
+    @FXML
+    private TextField IDfield;
 
     @FXML
     private Button addButton;
@@ -62,19 +56,49 @@ public class StoreController implements Initializable {
     @FXML
     private Button editButton;
 
-    private List<Product> products = new ArrayList<>();
+    @FXML
+    private Button backButton;
+
+    @FXML
+    private Stage stage;
+
+    // public List<Product> products = new ArrayList<>();
+
+    public void clickBackButton(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        List<Product> cart = new ArrayList<>();
+
+        ObservableList<Product> productNames = FXCollections.observableArrayList();
+        for (Product p : productClass.products) {
+            productNames.add(p);
+        }
+
+        // set list to ListView
+        myListView.setItems(productNames);
+
         // Set up the add button
         addButton.setOnAction(e -> {
             String name = nameField.getText();
-            int price = Integer.parseInt(priceField.getText());
-            Product newProduct = new Product(name, price);
-            products.add(newProduct);
+            int quantity = Integer.parseInt(quantityField.getText());
+            int unitCost = Integer.parseInt(costField.getText());
+            int ID = Integer.parseInt(IDfield.getText());
+            Product newProduct = new Product(name, quantity, ID, unitCost);
+            productClass.products.add(newProduct);
             myListView.getItems().add(newProduct);
             nameField.clear();
-            priceField.clear();
+            costField.clear();
+            quantityField.clear();
+            IDfield.clear();
         });
 
         // Set up the remove button
@@ -86,7 +110,7 @@ public class StoreController implements Initializable {
             if (selectedIndex != -1) {
                 Product selectedProduct = myListView.getSelectionModel().getSelectedItem();
                 myListView.getItems().remove(selectedProduct);
-                products.remove(selectedProduct);
+                productClass.products.remove(selectedProduct);
             }
         });
 
@@ -104,6 +128,11 @@ public class StoreController implements Initializable {
                 TextField nameField = new TextField(selectedProduct.name);
                 Label quantityLabel = new Label("Quantity:");
                 TextField quantityField = new TextField(String.valueOf(selectedProduct.quantity));
+                Label costLabel = new Label("Unit Cost:");
+                TextField costField = new TextField(String.valueOf(selectedProduct.unitCost));
+                Label IDLabel = new Label("ID :");
+                TextField IDfield = new TextField(String.valueOf(selectedProduct.ID));
+
                 GridPane content = new GridPane();
                 content.setHgap(10);
                 content.setVgap(10);
@@ -111,6 +140,10 @@ public class StoreController implements Initializable {
                 content.add(nameField, 1, 0);
                 content.add(quantityLabel, 0, 1);
                 content.add(quantityField, 1, 1);
+                content.add(costLabel, 0, 2);
+                content.add(costField, 1, 2);
+                content.add(IDLabel, 0, 3);
+                content.add(IDfield, 1, 3);
                 dialog.getDialogPane().setContent(content);
 
                 // Set up the dialog box buttons
@@ -124,8 +157,12 @@ public class StoreController implements Initializable {
                 if (result.isPresent() && result.get() != null) {
                     String name = nameField.getText();
                     int quantity = Integer.parseInt(quantityField.getText());
+                    int unitCost = Integer.parseInt(costField.getText());
+                    int ID = Integer.parseInt(IDfield.getText());
                     selectedProduct.name = name;
                     selectedProduct.quantity = quantity;
+                    selectedProduct.unitCost = unitCost;
+                    selectedProduct.ID = ID;
                     // Update the ListView to reflect the changes
                     myListView.refresh();
                 }

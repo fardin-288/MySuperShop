@@ -15,6 +15,7 @@
             <Button fx:id="modifyButton" mnemonicParsing="false" text="Modify" />
             <Button fx:id="removeButton" mnemonicParsing="false" text="Remove" />
             <Button fx:id="viewButton" mnemonicParsing="false" text="View" />
+         <Button fx:id="BackButton" mnemonicParsing="false" onAction="#goBack" text="Back" />
         </HBox>
     </bottom>
 </BorderPane>
