@@ -22,13 +22,15 @@ import javafx.util.Duration;
 public class MenuController implements Initializable {
 
     @FXML
-    private Button AboutButton;
+    private Button ExitButton;
     @FXML
-    private Button ClientsButton;
+    private Button SalesButton;
     @FXML
-    private Button PackagesButton;
+    private Button CashierButton;
     @FXML
-    private Button BookingButton;
+    private Button EmployeeButton;
+    @FXML
+    private Button StoreButton;
     @FXML
     private ImageView DashboardImg;
     @FXML
@@ -72,7 +74,16 @@ public class MenuController implements Initializable {
         });
     }
 
-    public void clickAboutButton(ActionEvent event) throws IOException {
+    public void GoBack(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public void clickSalesButton(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("sales.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -80,61 +91,30 @@ public class MenuController implements Initializable {
         stage.setResizable(false);
         stage.show();
 
-        // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("about.fxml"));
-        // AnchorPane newPane = fxmlLoader.load();
-        // ContentPane.getChildren().setAll(newPane);
-        AboutButton.setStyle("-fx-background-color:  d3d3d3;" + "-fx-background-radius:50;");
-        ClientsButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        PackagesButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        BookingButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
     }
 
-    public void clickClientsButton(ActionEvent event) throws IOException {
+    public void clickCashierButton(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("cashier.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
-
-        ContentPane.getChildren().clear();
-        AboutButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        ClientsButton.setStyle("-fx-background-color:  d3d3d3;" + "-fx-background-radius:50;");
-        PackagesButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        BookingButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
     }
 
-    public void clickPackagesButton(ActionEvent event) throws IOException {
+    public void clickEmployeeButton(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();
-
-        AboutButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        ClientsButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        PackagesButton.setStyle("-fx-background-color:  d3d3d3;" + "-fx-background-radius:50;");
-        BookingButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
     }
 
-    public void clickBookingButton(ActionEvent event) throws IOException {
+    public void clickStoreButton(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("Store.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
-
-        AboutButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        ClientsButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        PackagesButton.setStyle("-fx-background-color:  #4b0082;" + "-fx-background-radius:50;");
-        BookingButton.setStyle("-fx-background-color:  d3d3d3;" + "-fx-background-radius:50;");
-    }
-
-    public void clickBackButton(ActionEvent event) throws IOException {
-        BorderPane root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.show();

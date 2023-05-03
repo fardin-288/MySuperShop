@@ -1,157 +1,58 @@
 package Controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.concurrent.PriorityBlockingQueue;
+
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-import java.util.Optional;
-
 class Employee {
+    String name;
+    Integer ID;
 
-    public String name;
-    public int id;
-
-    public Employee(String name, int id) {
+    Employee(String name, int ID) {
         this.name = name;
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getSID() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.ID = ID;
     }
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                '}';
+        return name;
     }
+
+    public String info() {
+        return "Name : " + name + "\n" + "ID : " + ID.toString();
+    }
+
+    public static List<Employee> EmployeeList = new ArrayList<>();
+
 }
 
-class EmployeeList {
-    private List<Employee> employeeList;
-
-    public EmployeeList() {
-        employeeList = new ArrayList<>();
-    }
-
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public void addEmployee(Employee employee) {
-        employeeList.add(employee);
-    }
-
-    public void removeEmployee(Employee employee) {
-        employeeList.remove(employee);
-    }
-
-    public Employee getEmployeeById(int id) {
-        for (Employee employee : employeeList) {
-            if (employee.getSID() == id) {
-                return employee;
-            }
-        }
-        return null;
-    }
-}
-
-class EmployeeForm extends GridPane {
-
-    private final TextField nameField;
-    private final TextField idField;
-
-    public EmployeeForm() {
-        // Set grid pane properties
-        setPadding(new Insets(10));
-        setHgap(10);
-        setVgap(10);
-
-        // Create name field and label
-        Label nameLabel = new Label("Name:");
-        nameField = new TextField();
-        nameField.setPromptText("Enter employee name");
-
-        // Add name label and field to grid pane
-        add(nameLabel, 0, 0);
-        add(nameField, 1, 0);
-
-        // Create ID field and label
-        Label idLabel = new Label("ID:");
-        idField = new TextField();
-        idField.setPromptText("Enter employee ID");
-
-        // Add ID label and field to grid pane
-        add(idLabel, 0, 1);
-        add(idField, 1, 1);
-    }
-
-    public String getName() {
-        return nameField.getText();
-    }
-
-    public int getSID() {
-        try {
-            return Integer.parseInt(idField.getText());
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }
-
-    public void setName(String name) {
-        nameField.setText(name);
-    }
-
-    public void setId(int id) {
-        idField.setText(String.valueOf(id));
-    }
-
-    public void requestFocus() {
-        nameField.requestFocus();
-    }
-
-    public Employee getEmployee() {
-        return new Employee(getName(), getSID());
-    }
-}
-
-public class EmployeeController {
+public class EmployeeController implements Initializable {
 
     @FXML
     private ListView<Employee> employeeListView;
     @FXML
     private Button addButton, modifyButton, removeButton, viewButton, backButton;
-
-    private EmployeeList employeeList;
 
     public void goBack(ActionEvent event) throws IOException {
 
@@ -162,155 +63,150 @@ public class EmployeeController {
         stage.show();
     }
 
-    public void initialize() {
-        employeeList = new EmployeeList(); // initialize the employee list
-        // employeeListView.setItems(employeeList.getEmployeeList()); // set the
-        // employee list
-        // to the ListView
-        ObservableList<Employee> observableEmployeeList = FXCollections
-                .observableArrayList(employeeList.getEmployeeList());
-        employeeListView.setItems(observableEmployeeList);
+    // Refreshes the EmployeeListView
+    private void refresh() {
+        ObservableList<Employee> employeeObservableList = FXCollections.observableArrayList();
 
-        employeeListView.setCellFactory(employeeListView -> new ListCell<>() {
-            @Override
-            protected void updateItem(Employee employee, boolean empty) {
-                super.updateItem(employee, empty);
+        for (Employee p : Employee.EmployeeList) {
+            employeeObservableList.add(p);
+        }
 
-                if (empty || employee == null) {
-                    setText(null);
-                } else {
-                    setText(employee.getName());
-                }
-            }
-        });
+        // set list to ListView
+        employeeListView.setItems(employeeObservableList);
 
-        addButton.setOnAction(event -> addEmployee()); // set the Add button action
-        modifyButton.setOnAction(event -> modifyEmployee()); // set the Modify button action
-        removeButton.setOnAction(event -> removeEmployee()); // set the Remove button action
-        viewButton.setOnAction(event -> viewEmployee()); // set the View button action
     }
 
-    // Add button action
-    private void addEmployee() {
-        Dialog<Employee> dialog = new Dialog<>();
-        dialog.setTitle("Add Employee");
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-        // Set the button types
-        ButtonType addButtonType = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
+        refresh();
 
-        // Create the employee form
-        EmployeeForm employeeForm = new EmployeeForm();
-
-        // Set the content
-        dialog.getDialogPane().setContent(employeeForm);
-
-        // Request focus on the first field by default
-        employeeForm.requestFocus();
-
-        // Convert the result to an employee object when the add button is clicked
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == addButtonType) {
-                return employeeForm.getEmployee();
-            }
-            return null;
-        });
-
-        Optional<Employee> result = dialog.showAndWait();
-
-        result.ifPresent(employee -> {
-            employeeList.addEmployee(employee); // add the new employee to the list
-
-            // add employee name to the ListView
-            employeeListView.getItems().add(employee);
-
-            // alternatively, you can use a forEach loop to add each employee name to the
-            // ListView
-            // tableView.getItems().forEach(emp -> listView.getItems().add(emp.getName()));
-        });
-    }
-
-    // Modify button action
-    // Modify button action
-    private void modifyEmployee() {
-        Employee selectedEmployee = employeeListView.getSelectionModel().getSelectedItem();
-
-        if (selectedEmployee != null) {
+        addButton.setOnAction(event -> {
             Dialog<Employee> dialog = new Dialog<>();
-            dialog.setTitle("Modify Employee");
+            dialog.setTitle("Add Employee");
 
-            // Set the button types
-            ButtonType modifyButtonType = new ButtonType("Modify", ButtonBar.ButtonData.OK_DONE);
-            dialog.getDialogPane().getButtonTypes().addAll(modifyButtonType, ButtonType.CANCEL);
+            ButtonType addButtonType = new ButtonType("Add", ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(addButtonType, ButtonType.CANCEL);
 
-            // Create the employee form
-            EmployeeForm employeeForm = new EmployeeForm();
-            employeeForm.setName(selectedEmployee.getName());
-            employeeForm.setId(selectedEmployee.getSID());
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(10);
+            gridPane.setVgap(10);
+            gridPane.setPadding(new Insets(20, 10, 10, 10));
 
-            // Set the content
-            dialog.getDialogPane().setContent(employeeForm);
+            TextField nameTextField = new TextField();
+            nameTextField.setPromptText("Name");
+            TextField idTextField = new TextField();
+            idTextField.setPromptText("ID");
 
-            // Request focus on the first field by default
-            employeeForm.requestFocus();
+            gridPane.add(new Label("Name:"), 0, 0);
+            gridPane.add(nameTextField, 1, 0);
+            gridPane.add(new Label("ID:"), 0, 1);
+            gridPane.add(idTextField, 1, 1);
 
-            // Convert the result to an employee object when the modify button is clicked
+            dialog.getDialogPane().setContent(gridPane);
+
             dialog.setResultConverter(dialogButton -> {
-                if (dialogButton == modifyButtonType) {
-                    selectedEmployee.setName(employeeForm.getName());
-                    selectedEmployee.setId(employeeForm.getSID());
-                    return selectedEmployee;
+                if (dialogButton == addButtonType) {
+                    String name = nameTextField.getText().trim();
+                    String idString = idTextField.getText().trim();
+                    if (!name.isEmpty() && !idString.isEmpty()) {
+                        try {
+                            int id = Integer.parseInt(idString);
+                            return new Employee(name, id);
+                        } catch (NumberFormatException e) {
+                            // Invalid ID, do nothing
+                        }
+                    }
                 }
                 return null;
             });
 
             Optional<Employee> result = dialog.showAndWait();
-
             result.ifPresent(employee -> {
-                employeeListView.refresh();
+                Employee.EmployeeList.add(employee);
             });
-        }
-    }
 
-    // Remove button action
-    // Remove button action
-    private void removeEmployee() {
-        Employee selectedEmployee = employeeListView.getSelectionModel().getSelectedItem();
-        if (selectedEmployee != null) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation");
-            alert.setHeaderText("Are you sure you want to remove this employee?");
-            alert.setContentText(selectedEmployee.getName() + " will be removed from the list.");
+            refresh();
+        });
 
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                employeeList.removeEmployee(selectedEmployee);
-                employeeListView.getItems().remove(selectedEmployee);
-                ObservableList<Employee> updatedObservableList = FXCollections
-                        .observableList(employeeList.getEmployeeList());
-                employeeListView.setItems(updatedObservableList);
+        // Remove Object
+        removeButton.setOnAction(event -> {
+            Employee selectedEmployee = employeeListView.getSelectionModel().getSelectedItem();
+            if (selectedEmployee != null) {
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Remove Employee");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to remove this employee?");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    Employee.EmployeeList.remove(selectedEmployee);
+                }
             }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning");
-            alert.setHeaderText("No employee selected");
-            alert.setContentText("Please select an employee to remove.");
 
-            alert.showAndWait();
-        }
+            refresh();
+        });
+
+        // Modify Selected Object
+        modifyButton.setOnAction(event -> {
+            Employee selectedEmployee = employeeListView.getSelectionModel().getSelectedItem();
+            if (selectedEmployee != null) {
+                Dialog<Employee> dialog = new Dialog<>();
+                dialog.setTitle("Modify Employee");
+
+                // Set the button types
+                ButtonType modifyButtonType = new ButtonType("Modify", ButtonData.OK_DONE);
+                dialog.getDialogPane().getButtonTypes().addAll(modifyButtonType, ButtonType.CANCEL);
+
+                // Create the name and ID labels and text fields
+                Label nameLabel = new Label("Name:");
+                TextField nameField = new TextField(selectedEmployee.name);
+                Label idLabel = new Label("ID:");
+                TextField idField = new TextField(selectedEmployee.ID.toString());
+
+                // Add the labels and text fields to the dialog pane
+                GridPane grid = new GridPane();
+                grid.setHgap(10);
+                grid.setVgap(10);
+                grid.add(nameLabel, 1, 1);
+                grid.add(nameField, 2, 1);
+                grid.add(idLabel, 1, 2);
+                grid.add(idField, 2, 2);
+                dialog.getDialogPane().setContent(grid);
+
+                // Request focus on the name field by default
+                Platform.runLater(() -> nameField.requestFocus());
+
+                // Convert the result to a Employee object when the Modify button is clicked
+                dialog.setResultConverter(dialogButton -> {
+                    if (dialogButton == modifyButtonType) {
+                        String name = nameField.getText();
+                        Integer id = Integer.parseInt(idField.getText());
+                        selectedEmployee.name = name;
+                        selectedEmployee.ID = id;
+                        Employee.EmployeeList.set(Employee.EmployeeList.indexOf(selectedEmployee), selectedEmployee);
+                        return selectedEmployee;
+                    }
+                    return null;
+                });
+
+                Optional<Employee> result = dialog.showAndWait();
+            }
+            refresh();
+        });
+
+        // View button action
+        viewButton.setOnAction(event -> {
+            Employee selectedEmployee = employeeListView.getSelectionModel().getSelectedItem();
+
+            if (selectedEmployee != null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Employee Information");
+                alert.setHeaderText(null);
+                alert.setContentText(selectedEmployee.info());
+                alert.showAndWait();
+            }
+        });
+
     }
-
-    // View button action
-    private void viewEmployee() {
-        Employee selectedEmployee = employeeListView.getSelectionModel().getSelectedItem();
-
-        if (selectedEmployee != null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Employee Information");
-            alert.setHeaderText(null);
-            alert.setContentText(selectedEmployee.toString());
-            alert.showAndWait();
-        }
-    }
-
 }

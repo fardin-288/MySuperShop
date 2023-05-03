@@ -12,21 +12,26 @@
    <left>
       <AnchorPane fx:id="SidebarPane" style="-fx-background-color: grey; -fx-border-color: White;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ClientsButton" alignment="TOP_LEFT" layoutY="135.0" mnemonicParsing="false" onAction="#clickClientsButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Cashier" textFill="WHITE">
+            <Button fx:id="CashierButton" alignment="TOP_LEFT" layoutY="135.0" mnemonicParsing="false" onAction="#clickCashierButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Cashier" textFill="WHITE">
                <font>
                   <Font size="29.0" />
                </font></Button>
-            <Button fx:id="PackagesButton" alignment="TOP_LEFT" layoutY="240.0" mnemonicParsing="false" onAction="#clickPackagesButton" prefHeight="39.0" prefWidth="198.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Employees" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="EmployeeButton" alignment="TOP_LEFT" layoutY="240.0" mnemonicParsing="false" onAction="#clickEmployeeButton" prefHeight="39.0" prefWidth="198.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Employees" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="29.0" />
                </font></Button>
-            <Button fx:id="BookingButton" alignment="TOP_LEFT" layoutY="345.0" mnemonicParsing="false" onAction="#clickBookingButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Store" textFill="WHITE">
+            <Button fx:id="StoreButton" alignment="TOP_LEFT" layoutY="345.0" mnemonicParsing="false" onAction="#clickStoreButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Store" textFill="WHITE">
                <font>
                   <Font size="31.0" />
                </font></Button>
-            <Button fx:id="AboutButton" alignment="TOP_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#clickAboutButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Sales" textFill="WHITE">
+            <Button fx:id="SalesButton" alignment="TOP_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#clickSalesButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Sales" textFill="WHITE">
                <font>
                   <Font size="27.0" />
+               </font>
+            </Button>
+            <Button fx:id="ExitButton" alignment="TOP_LEFT" layoutX="-1.0" layoutY="446.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Exit" textFill="WHITE">
+               <font>
+                  <Font size="33.0" />
                </font>
             </Button>
          </children>
@@ -49,17 +54,6 @@
       </AnchorPane>
    </top>
    <right>
-      <AnchorPane fx:id="ContentPane" prefHeight="746.0" prefWidth="803.0" BorderPane.alignment="CENTER">
-         <children>
-            <AnchorPane layoutX="561.0" prefHeight="747.0" prefWidth="242.0" style="-fx-background-color: grey;">
-               <children>
-                  <Label layoutX="82.0" layoutY="26.0" prefHeight="42.0" prefWidth="79.0" style="-fx-background-color: black;" text="Details" textFill="#f5f5f5">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </children></AnchorPane>
+      <AnchorPane prefHeight="746.0" prefWidth="803.0" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
