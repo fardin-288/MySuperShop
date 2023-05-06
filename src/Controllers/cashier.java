@@ -137,6 +137,19 @@ public class cashier implements Initializable {
                 while (result.isPresent() && result.get() != null && ok == false) {
                     int quantity = Integer.parseInt(quantityField.getText());
 
+                    if (selectedProduct.quantity == 0) {
+                        Alert alert = new Alert(AlertType.WARNING,
+                                "No Product Stock Available",
+                                ButtonType.OK);
+                        alert.showAndWait();
+
+                        if (alert.getResult() == ButtonType.OK) {
+
+                            // end
+                            break;
+                        }
+                    }
+
                     if (quantity > selectedProduct.quantity) {
                         quantity = selectedProduct.quantity;
                         Alert alert = new Alert(AlertType.ERROR);
@@ -173,6 +186,11 @@ public class cashier implements Initializable {
 
         // Checkout of the sale
         checkoutButton.setOnAction(e -> {
+
+            if (carListView.getItems().size() == 0) {
+                return;
+            }
+
             Alert alert = new Alert(AlertType.WARNING,
                     "Are you sure you want to checkout? This action cannot be undone.",
                     ButtonType.YES, ButtonType.NO);
