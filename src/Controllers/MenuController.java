@@ -37,6 +37,8 @@ public class MenuController implements Initializable {
     private AnchorPane SidebarPane;
     @FXML
     private AnchorPane ContentPane;
+    // @FXML
+    // private AnchorPane ControlPane;
 
     @FXML
     private Stage stage;
@@ -85,39 +87,61 @@ public class MenuController implements Initializable {
 
     public void clickSalesButton(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("sales.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        // Parent root = FXMLLoader.load(getClass().getResource("sales.fxml"));
+        // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // stage.setScene(new Scene(root));
+        // stage.setResizable(false);
+        // stage.show();
+
+        // ContentPane = new AnchorPane();
+
+        ContentPane.getChildren().clear();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sales.fxml"));
+        AnchorPane newPane = fxmlLoader.load();
+        ContentPane.getChildren().add(newPane);
 
     }
 
     public void clickCashierButton(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("cashier.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        // Parent root = FXMLLoader.load(getClass().getResource("cashier.fxml"));
+        // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // stage.setScene(new Scene(root));
+        // stage.setResizable(false);
+        // stage.show();
+
+        ContentPane.getChildren().clear();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cashier.fxml"));
+        AnchorPane newPane = fxmlLoader.load();
+        ContentPane.getChildren().add(newPane);
     }
 
     public void clickEmployeeButton(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        // Parent root = FXMLLoader.load(getClass().getResource("Employee.fxml"));
+        // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // stage.setScene(new Scene(root));
+        // stage.setResizable(false);
+        // stage.show();
+
+        ContentPane.getChildren().clear();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Employee.fxml"));
+        AnchorPane newPane = fxmlLoader.load();
+        ContentPane.getChildren().add(newPane);
     }
 
     public void clickStoreButton(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("Store.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        // Parent root = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // stage.setScene(new Scene(root));
+        // stage.setResizable(false);
+        // stage.show();
+
+        ContentPane.getChildren().clear();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Store.fxml"));
+        AnchorPane newPane = fxmlLoader.load();
+        ContentPane.getChildren().add(newPane);
     }
 
 }

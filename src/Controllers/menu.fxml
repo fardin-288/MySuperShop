@@ -54,6 +54,9 @@
       </AnchorPane>
    </top>
    <right>
-      <AnchorPane prefHeight="746.0" prefWidth="803.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="746.0" prefWidth="803.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="ContentPane" layoutX="1.0" layoutY="2.0" prefHeight="736.0" prefWidth="799.0" />
+         </children></AnchorPane>
    </right>
 </BorderPane>

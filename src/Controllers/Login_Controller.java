@@ -42,7 +42,7 @@ public class Login_Controller {
         String password = passwordField.getText();
 
         // Check if the username and password are valid
-        if (isValidLogin(username, password)) {
+        if (LoginInfo.isValidLogin(username, password)) {
             BorderPane root = FXMLLoader.load(getClass().getResource("menu.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -58,8 +58,8 @@ public class Login_Controller {
         }
     }
 
-    private boolean isValidLogin(String username, String password) {
-        // Replace this with your actual validation logic
-        return username.equals("") && password.equals("");
-    }
+    // private boolean isValidLogin(String username, String password) {
+    // // Replace this with your actual validation logic
+    // return username.equals("") && password.equals("");
+    // }
 }
