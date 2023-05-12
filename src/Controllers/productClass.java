@@ -47,4 +47,8 @@ public class productClass {
 
     public static List<Product> products = new ArrayList<>();
 
+    public static Integer product_num() {
+        return products.size();
+    }
+
 }

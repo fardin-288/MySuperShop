@@ -23,5 +23,7 @@
       <TextField fx:id="costField" layoutX="398.0" layoutY="75.0" promptText="Unit Cost" />
       <TextField fx:id="IDfield" layoutX="398.0" layoutY="36.0" promptText="ID" />
       <Button fx:id="backButton" layoutX="38.0" layoutY="24.0" mnemonicParsing="false" onAction="#clickBackButton" text="Back" />
+      <TextField fx:id="productNumberField" layoutX="152.0" layoutY="333.0" />
+      <Text layoutX="59.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Number" />
    </children>
 </AnchorPane>

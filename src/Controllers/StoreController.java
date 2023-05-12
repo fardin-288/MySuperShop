@@ -62,6 +62,9 @@ public class StoreController implements Initializable {
     @FXML
     private Stage stage;
 
+    @FXML
+    private TextField productNumberField;
+
     // public List<Product> products = new ArrayList<>();
 
     public void clickBackButton(ActionEvent event) throws IOException {
@@ -75,6 +78,8 @@ public class StoreController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        productNumberField.setText(productClass.product_num().toString());
 
         List<Product> cart = new ArrayList<>();
 
@@ -99,6 +104,9 @@ public class StoreController implements Initializable {
             costField.clear();
             quantityField.clear();
             IDfield.clear();
+
+            productNumberField.setText(productClass.product_num().toString());
+
         });
 
         // Set up the remove button
@@ -112,6 +120,9 @@ public class StoreController implements Initializable {
                 myListView.getItems().remove(selectedProduct);
                 productClass.products.remove(selectedProduct);
             }
+
+            productNumberField.setText(productClass.product_num().toString());
+
         });
 
         editButton.setOnAction(e -> {
@@ -167,6 +178,8 @@ public class StoreController implements Initializable {
                     myListView.refresh();
                 }
             }
+            productNumberField.setText(productClass.product_num().toString());
+
         });
     }
 }
