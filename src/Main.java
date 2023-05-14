@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("img/icon.jpg"));
+        primaryStage.setTitle("Grocery Warehouse");
         primaryStage.show();
     }
 

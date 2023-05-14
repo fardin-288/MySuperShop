@@ -19,6 +19,22 @@ class Product {
         this.unitCost = unitCost;
     }
 
+    public int get_id() {
+        return ID;
+    }
+
+    public String get_name() {
+        return name;
+    }
+
+    public int get_quantity() {
+        return quantity;
+    }
+
+    public int get_cost() {
+        return unitCost;
+    }
+
     public void setname(String name) {
         this.name = name;
     }
@@ -41,14 +57,16 @@ class Product {
         return unitCost.toString(ID);
     }
 
+    public void buildProducts() {
+        Product newProduct = new Product(name, quantity, ID, unitCost);
+        productClass.products.add(newProduct);
+        // myListView.getItems().add(newProduct);
+    }
+
 };
 
 public class productClass {
 
     public static List<Product> products = new ArrayList<>();
-
-    public static Integer product_num() {
-        return products.size();
-    }
 
 }

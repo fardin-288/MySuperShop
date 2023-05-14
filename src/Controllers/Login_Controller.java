@@ -12,20 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-// public class Login_Controller {
-//     @FXML
-//     private Stage stage;
-
-//     public void clickSignIn(ActionEvent event) throws IOException {
-//         BorderPane root = FXMLLoader.load(getClass().getResource("menu.fxml"));
-//         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//         stage.setScene(new Scene(root));
-//         stage.setResizable(false);
-//         stage.show();
-//     }
-
-// }
+import java.io.*;
 
 public class Login_Controller {
     @FXML
@@ -42,7 +29,9 @@ public class Login_Controller {
         String password = passwordField.getText();
 
         // Check if the username and password are valid
-        if (LoginInfo.isValidLogin(username, password)) {
+        if (isValidLogin(username, password))
+        // if (username == "name" && password == "passsword")
+        {
             BorderPane root = FXMLLoader.load(getClass().getResource("menu.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -58,8 +47,15 @@ public class Login_Controller {
         }
     }
 
-    // private boolean isValidLogin(String username, String password) {
-    // // Replace this with your actual validation logic
-    // return username.equals("") && password.equals("");
-    // }
+    private boolean isValidLogin(String username, String password) {
+
+        if ((username.equals("fardin") || username.equals("rafin") || username.equals("riya"))
+                && password.equals("password")) {
+            return true;
+        } else {
+            return false;
+            // return true;
+        }
+
+    }
 }

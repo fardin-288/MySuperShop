@@ -8,55 +8,137 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MenuController">
    <left>
-      <AnchorPane fx:id="SidebarPane" style="-fx-background-color: grey; -fx-border-color: White;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="SidebarPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="202.0" styleClass="dashboardrightside" stylesheets="@../CSS/dashboard.css" BorderPane.alignment="BOTTOM_LEFT">
          <children>
-            <Button fx:id="CashierButton" alignment="TOP_LEFT" layoutY="135.0" mnemonicParsing="false" onAction="#clickCashierButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Cashier" textFill="WHITE">
+            <Button fx:id="CashierButton" layoutX="-29.0" layoutY="91.0" mnemonicParsing="false" onAction="#clickCashierButton" prefHeight="50.0" prefWidth="231.0" stylesheets="@../CSS/dashboard.css" text="Cashier" textFill="WHITE" AnchorPane.leftAnchor="-29.0">
                <font>
-                  <Font size="29.0" />
+                  <Font name="Cambria Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="EmployeeButton" alignment="TOP_LEFT" layoutY="240.0" mnemonicParsing="false" onAction="#clickEmployeeButton" prefHeight="39.0" prefWidth="198.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Employees" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="EmployeeButton" layoutX="-1.0" layoutY="156.0" mnemonicParsing="false" onAction="#clickEmployeeButton" prefHeight="50.0" prefWidth="203.0" stylesheets="@../CSS/dashboard.css" text="Employees" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="29.0" />
+                  <Font name="Cambria Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="StoreButton" alignment="TOP_LEFT" layoutY="345.0" mnemonicParsing="false" onAction="#clickStoreButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Store" textFill="WHITE">
+            <Button fx:id="StoreButton" layoutX="-49.0" layoutY="222.0" mnemonicParsing="false" onAction="#clickStoreButton" prefHeight="50.0" prefWidth="251.0" stylesheets="@../CSS/dashboard.css" text="Store" textFill="WHITE">
                <font>
-                  <Font size="31.0" />
+                  <Font name="Cambria Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="SalesButton" alignment="TOP_LEFT" layoutY="30.0" mnemonicParsing="false" onAction="#clickSalesButton" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Sales" textFill="WHITE">
+            <Button fx:id="SalesButton" contentDisplay="TOP" layoutX="-43.0" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#clickSalesButton" prefHeight="50.0" prefWidth="245.0" stylesheets="@../CSS/dashboard.css" text="Sales" textFill="WHITE">
                <font>
-                  <Font size="27.0" />
+                  <Font name="Cambria Bold" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="ExitButton" alignment="TOP_LEFT" layoutX="-1.0" layoutY="446.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: indigo; -fx-background-radius: 50;" text="Exit" textFill="WHITE">
+            <Button fx:id="AboutButton" layoutX="-65.0" layoutY="278.0" mnemonicParsing="false" onAction="#ClickAboutButton" prefHeight="50.0" prefWidth="261.0" stylesheets="@../CSS/dashboard.css" text="   About" textFill="WHITE" AnchorPane.bottomAnchor="193.0" AnchorPane.leftAnchor="-65.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="278.0">
                <font>
-                  <Font size="33.0" />
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="20.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../MySuperShop-copy/src/img/store.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="21.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../MySuperShop-copy/src/img/exit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="15.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../MySuperShop-copy/src/img/cashier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="15.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../MySuperShop-copy/src/img/sale.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="18.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../MySuperShop-copy/src/img/employee.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="ExitButton1" layoutX="-65.0" layoutY="338.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="50.0" prefWidth="267.0" stylesheets="@../CSS/dashboard.css" text="Exit" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
    </left>
    <top>
-      <AnchorPane prefHeight="50.0" prefWidth="750.0" style="-fx-background-color: grey; -fx-border-color: White;" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="129.0" prefWidth="202.0" styleClass="dashboardupperright" stylesheets="@../CSS/dashboard.css" BorderPane.alignment="TOP_LEFT">
          <children>
-            <ImageView fx:id="DashboardImg" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: White;">
+            <ImageView fx:id="DashboardImg" fitHeight="41.0" fitWidth="39.0" layoutX="3.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: White;">
                <image>
                   <Image url="@../img/menu.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="359.0" layoutY="2.0" prefHeight="54.0" prefWidth="188.0" style="-fx-background-color: Black; -fx-border-color: Black;" text="Admin" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="358.0" AnchorPane.rightAnchor="459.0" AnchorPane.topAnchor="1.0">
-               <font>
-                  <Font name="System Bold Italic" size="35.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="43.0" fitWidth="144.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/l.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </top>
    <right>
       <AnchorPane prefHeight="746.0" prefWidth="803.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="ContentPane" layoutX="1.0" layoutY="2.0" prefHeight="736.0" prefWidth="799.0" />
+            <AnchorPane fx:id="ContentPane" layoutX="23.0" layoutY="-135.0" prefHeight="657.0" prefWidth="733.0" styleClass="dashboardupperright" stylesheets="@../CSS/dashboard.css">
+               <children>
+                  <Label layoutX="288.0" layoutY="52.0" />
+                  <Label layoutX="280.0" layoutY="50.0" text="ABOUT US" textFill="#50238a">
+                     <font>
+                        <Font name="Cambria Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="275.0" fitWidth="786.0" layoutX="2.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/about.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="2.0" layoutY="598.0" prefHeight="60.0" prefWidth="750.0" styleClass="lowerbox" stylesheets="@../CSS/dashboard.css">
+                     <children>
+                        <Label layoutX="10.0" layoutY="12.0" text="Head Quarter:" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="34.0" text="Level 8, Novo Tower. Dhaka 1208, Bangladesh." textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="411.0" layoutY="14.0" text="Email Us At:" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="501.0" layoutY="15.0" text="queries@grocerywarehouse.com" textFill="WHITE">
+                           <font>
+                              <Font name="System Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="411.0" layoutY="34.0" text="Contact: " textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="471.0" layoutY="35.0" text="16497  (9 am to 9 pm)" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="188.0" fitWidth="837.0" layoutX="1.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/aboutus.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
          </children></AnchorPane>
    </right>
 </BorderPane>

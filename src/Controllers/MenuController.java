@@ -32,6 +32,8 @@ public class MenuController implements Initializable {
     @FXML
     private Button StoreButton;
     @FXML
+    private Button AboutButton;
+    @FXML
     private ImageView DashboardImg;
     @FXML
     private AnchorPane SidebarPane;
@@ -142,6 +144,21 @@ public class MenuController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Store.fxml"));
         AnchorPane newPane = fxmlLoader.load();
         ContentPane.getChildren().add(newPane);
+    }
+
+    public void ClickAboutButton(ActionEvent event) throws IOException {
+
+        // Parent root = FXMLLoader.load(getClass().getResource("Store.fxml"));
+        // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // stage.setScene(new Scene(root));
+        // stage.setResizable(false);
+        // stage.show();
+
+        BorderPane root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.show();
     }
 
 }

@@ -6,6 +6,46 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
+            "projectName": "SuperShop_92d5082d",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "SuperShop_536fbb2a",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "SuperShop_639bc319",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "My_24608b84",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "MySuperShop-main_7bb22b4",
+            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
             "projectName": "MySupershopbeta - Copy_5c745bec",
             "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml"
         },
@@ -30,7 +70,7 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
-            "vmArgs": "--module-path D:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml",
+            "vmArgs": "--module-path C:/javafx-sdk-20/lib --add-modules javafx.controls,javafx.graphics,javafx.fxml",
             "projectName": "MySuperShop_1551488c"
         },
         {

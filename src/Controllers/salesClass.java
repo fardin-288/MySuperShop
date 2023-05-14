@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import java.io.*;
 import javafx.scene.Node;
 import java.io.IOException;
 import java.net.URL;
@@ -25,11 +25,11 @@ import java.util.ResourceBundle;
 
 public class salesClass implements Initializable {
 
-    public static int Total_sales = 0;
-    public static int Total_sales_money = 0;
+    public static int Total_sales;
+    public static int Total_sales_money;
 
     @FXML
-    public static List<List<Product>> sales;
+    public ListView<Product> salesListView;
 
     @FXML
     private TextField total_sales_money_textField, total_sales_TextField;
@@ -46,65 +46,51 @@ public class salesClass implements Initializable {
         stage.show();
     }
 
-    // // public static List<List<Product>> sales;
-    // public ListView<Product> listView;
-
-    // public void Sales(List<List<Product>> sales, ListView<String> listView) {
-    // this.sales = sales;
-    // this.listView = listView;
-    // displaySales();
-    // }
-
-    // public static void addSale(List<Product> listView) {
-    // // Retrieve the items from the ListView and add them to a new List<Product>
-    // List<Product> productList = new ArrayList<>();
-    // productList.addAll(listView.getItems());
-    // for (Product x : listView) {
-    // sales.add((List<Product>) x);
-    // }
-
-    // // Add the new List<Product> to the sales list
-    // sales.add(productList);
-    // }
-
-    // private void displaySales() {
-    // ObservableList<String> saleStrings = FXCollections.observableArrayList();
-    // int saleNumber = 1;
-    // for (List<Product> sale : sales) {
-    // LocalDateTime saleDateTime = LocalDateTime.now(); // Replace with actual sale
-    // date/time
-    // String saleString = "Sale " + saleNumber + " - "
-    // + saleDateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-    // saleStrings.add(saleString);
-    // for (Product product : sale) {
-    // saleStrings.add(" " + product.getName() + " - $" + product.getPrice());
-    // }
-    // saleNumber++;
-    // }
-
-    // listView.setItems(saleStrings.sorted(Comparator.reverseOrder()));
-    // }
+    public ObservableList<Product> salesData = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // ListView<String> salesListView = new ListView<>();
-        // ObservableList<String> salesData = FXCollections.observableArrayList();
+        String fileName = "src/Controllers/cash.txt";
 
-        // for (int i = 0; i < sales.size(); i++) {
-        // List<Product> sale = sales.get(i);
-        // String saleInfo = "Sale " + (i + 1) + ":\n";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String line = reader.readLine();
+            while (line != null) {
+                System.out.println(line);
+                String[] parts = line.split(" ");
+                salesData.add(new Product(parts[0] + "__" + parts[1] + "__" + parts[3], Integer.parseInt(parts[1]),
+                        Integer.parseInt(parts[2]), 100));
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+        // Adding the products to the listview
+        // ObservableList<Product> salesData = FXCollections.observableArrayList();
+        // salesData.add(new Product("ahmed", 12, 21, 12));
+        // salesData.add(new Product("conrad", 12, 21, 12));
+        salesListView.setItems(salesData);
+        salesListView.refresh();
+        // Addition done
 
-        // for (Product product : sale) {
-        // saleInfo += product.getName() + " - $" + product.getPrice() + "\n";
-        // }
+        // Open the file for reading
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/Controllers/total_sales.txt"));
 
-        // salesData.add(saleInfo);
-        // }
+            // Read the first integer
+            Total_sales = Integer.parseInt(reader.readLine());
 
-        // ((ListView<String>) saleslistview).setItems(salesData);
+            // Read the second integer
+            Total_sales_money = Integer.parseInt(reader.readLine());
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
 
         total_sales_money_textField.setText(String.valueOf(Total_sales_money));
+        System.out.println(Total_sales_money);
         total_sales_TextField.setText(String.valueOf(Total_sales));
+        System.out.println(Total_sales);
 
     }
 

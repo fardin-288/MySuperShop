@@ -1,0 +1,45 @@
+.left-form{
+    -fx-background-color:linear-gradient(to bottom right, #0e3d80,#84a6d7 );
+    -fx-boarder-color:#000;
+    -fx-boarder-width:.4px 0px .4px .4px; 
+}
+
+.dashboardrightside{
+    -fx-background-color:linear-gradient(to top right, #331557,#5d2d9c );
+
+}
+
+.dashboardupperright{
+    -fx-background-color:linear-gradient(to top right, #d8dbe9,#f4f3fa );
+
+}
+
+.lowerbox{
+    -fx-background-color:linear-gradient(to top right, #9883e9,#9575be ); 
+}
+
+.emailbox{
+    -fx-background-color:linear-gradient(to top right, #7c65da,#8b60c4 ); 
+}
+
+.button{
+    -fx-background-color: tranparent;
+
+}
+
+.button:hover{
+    -fx-background-color:linear-gradient(to top right, #630886,#671c72 );
+    -fx-cursor:hand;
+    -fx-border-width: 0px 0px 0px 3px;
+}
+
+.button:pressed{
+    -fx-background-color: #7156DD;
+}
+
+.button:focused{
+    -fx-background-color: #7156DD;
+    -fx-border-color: #CDD1D6;
+    -fx-border-width: 0px 0px 0px 3px;
+
+}
